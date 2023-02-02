@@ -13,7 +13,7 @@ services:
       - "3000:3000"
     # Volumes, detect changes (maps the files)
     volumes:
-      # [local-sourcecode-location]:[relative(no_dot)-container-location-of_the_sourcecide-to_map]
+      # [dev-relative-path]:[container-abs-path] (no dot)
       - ./client:/client
       - /client/node_modules
   server:
@@ -22,5 +22,7 @@ services:
     ports:
       - "4000:4000"
     volumes:
+      # [dev-relative-path]:[container-abs-path] (no dot)
       - ./server:/server
+      # [container-abs-path]
       - /server/node_modules

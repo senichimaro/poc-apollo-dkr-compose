@@ -21,17 +21,19 @@ services:
       - "3000:3000"
     # Volumes, detect changes (maps the files)
     volumes:
-      # [local-sourcecode-location]:[container-location-of_the_sourcecide-to_map]
-      - ./client:./client
-      - ./client/node_modules:./client/node_modules
+      # [dev-relative-path]:[container-abs-path] (no dot)
+      - ./client:/client
+      - /client/node_modules
   server:
     build: ./server
     container_name: poc_server
     ports:
       - "4000:4000"
     volumes:
-      - ./server:./server
-      - ./server/node_modules:./server/node_modules
+      # [dev-relative-path]:[container-abs-path] (no dot)
+      - ./server:/server
+      # [container-abs-path]
+      - /server/node_modules
 ```
 
 
